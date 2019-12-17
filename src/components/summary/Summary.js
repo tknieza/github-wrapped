@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Slide from "./slide";
 
-const Summary = ({ history, userData, ...otherProps }) => {
+const Summary = ({ history, userData }) => {
+  if (Object.keys(userData).length < 1) {
+    history.push("/");
+  }
   return Object.keys(userData).length > 0 ? (
     <div>
       <h1>{userData.metadata.login}</h1>
@@ -16,7 +19,7 @@ const Summary = ({ history, userData, ...otherProps }) => {
       </Slide>
     </div>
   ) : (
-    <div>BAD ENTRY</div>
+    <div></div>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/home";
 import Summary from "./components/summary";
+import NoMatch from "./components/NoMatch";
 import "./App.css";
 
 const App = props => {
@@ -16,6 +17,9 @@ const App = props => {
             </Route>
             <Route path="/summary">
               <Summary userData={userData} />
+            </Route>
+            <Route path="*">
+              <NoMatch />
             </Route>
           </Switch>
         </Router>
