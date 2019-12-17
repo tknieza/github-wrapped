@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import githubREST from "../../api/githubREST";
 
 const Input = styled.input`
   resize: none;
@@ -36,26 +37,24 @@ const Button = styled.button`
 
 const Home = ({ history, setUserData, ...otherProps }) => {
   const [username, setUsername] = useState("");
-  const gitHubUserSearch = "https://api.github.com/search/users?q=";
   const handleChange = event => setUsername(event.target.value);
-  const handleSubmit = event => {
-    event.preventDefault();
-    fetch(gitHubUserSearch + username)
-      .then(response => response.json())
-      .then(json => {
-        setUserData(json.items[0]);
-      })
-      .then(() => {
-        history.push("/summary");
-      })
-      .catch(response => console.log(response));
-  };
+
   return (
     <div>
       <h1>GitHub Year Wrapped</h1>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={event => {
+          githubREST(event, username, setUserData, history.push);
+        }}
+      >
         <Input placeholder="Search" onChange={handleChange} />
-        <Button onClick={handleSubmit}>+</Button>
+        <Button
+          onClick={event => {
+            githubREST(event, username, setUserData, history.push);
+          }}
+        >
+          +
+        </Button>
       </Form>
     </div>
   );
