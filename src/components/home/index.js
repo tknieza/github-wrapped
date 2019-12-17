@@ -12,14 +12,14 @@ const Input = styled.input`
   color: #282c34;
   :focus {
     outline: none;
-    border-bottom: 2px #282c34 solid;
+    border-bottom: 2px gray solid;
     border-radius: 1px;
   }
   border: 0;
   border-bottom: 3px;
   padding: 0.5rem 0;
   margin: 1rem;
-  margin-right: 0;
+  margin-right: 1rem;
 `;
 
 const Form = styled.form`
@@ -28,11 +28,18 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-  background: none;
+  background-color: #b1ede8;
+  border-radius: 25px;
   color: #282c34;
   border: none;
-  margin: 1rem;
-  font-size: 1.6rem;
+  margin: 0.2rem;
+  font-size: 1.2rem;
+  padding: 0.6rem;
+  :hover {
+    background-color: #ff6978;
+    color: white;
+  }
+  transition: all 0.2s ease-in-out;
 `;
 
 export default withRouter(({ history, setUserData, ...otherProps }) => {
@@ -53,7 +60,9 @@ export default withRouter(({ history, setUserData, ...otherProps }) => {
             githubREST(event, username, setUserData, history.push);
           }}
         >
-          Button
+          <span role="img" aria-label="Search">
+            &#x1f50d;
+          </span>
         </Button>
       </Form>
     </div>

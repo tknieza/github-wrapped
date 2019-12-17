@@ -1,13 +1,24 @@
-async function githubREST(event, username, setUserData, history) {
+function githubREST(event, username, setUserData, history) {
   let userData = {};
+
   event.preventDefault();
-  await fetch(`https://api.github.com/users/${username}`)
+
+  if (username.length < 1) {
+    return;
+  }
+
+  fetch(`https://api.github.com/users/${username}`)
     .then(res => res.json())
     .then(json => {
       userData.metadata = json;
     })
     .catch(console.error)
     .finally(() => {
+      // Checking if user is found
+      if (!userData.metadata || userData.metadata.message === "Not Found") {
+        return;
+      }
+
       // Followers
       fetch(userData.metadata.followers_url)
         .then(res => res.json())
