@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function Slide({ index }) {
+export default function Slide(props) {
+  const { index, children } = props;
   return (
     <div>
-      <h1>Slide 1{index}</h1>
+      {children}
+      <h1>Slide {index}</h1>
     </div>
   );
 }
