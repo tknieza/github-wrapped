@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import Home from "./components/home";
 import Summary from "./components/summary";
-import NoMatch from "./components/NoMatch";
 import "./App.css";
 
 const App = props => {
@@ -19,7 +23,7 @@ const App = props => {
               <Summary userData={userData} />
             </Route>
             <Route path="*">
-              <NoMatch />
+              <Redirect to="/" />
             </Route>
           </Switch>
         </Router>
