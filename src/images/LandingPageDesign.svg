@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #164f63;
+      }
+
+      .cls-2 {
+        fill: #8ed2dd;
+      }
+
+      .cls-3 {
+        fill: #e7d9be;
+      }
+
+      .cls-4 {
+        fill: #fe765e;
+      }
+
+      .cls-5 {
+        fill: #f7bbba;
+      }
+
+      .cls-6 {
+        fill: #024059;
+      }
+
+      .cls-7 {
+        fill: #86d0db;
+      }
+
+      .cls-8 {
+        fill: #2b593f;
+      }
+    </style>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(-63 -88)">
+    <path id="Rectangle_4" data-name="Rectangle 4" class="cls-1" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(63 88)"/>
+    <path id="Rectangle_5" data-name="Rectangle 5" class="cls-2" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(463 288) rotate(180)"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" class="cls-3" width="200" height="200" rx="100" transform="translate(63 288)"/>
+    <path id="Rectangle_7" data-name="Rectangle 7" class="cls-4" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(263 288)"/>
+    <path id="Rectangle_8" data-name="Rectangle 8" class="cls-5" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(63 488)"/>
+    <path id="Rectangle_9" data-name="Rectangle 9" class="cls-4" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(263 688) rotate(-90)"/>
+    <rect id="Rectangle_10" data-name="Rectangle 10" class="cls-3" width="200" height="200" rx="100" transform="translate(463 88)"/>
+    <rect id="Rectangle_11" data-name="Rectangle 11" class="cls-6" width="200" height="200" rx="100" transform="translate(463 488)"/>
+    <path id="Rectangle_12" data-name="Rectangle 12" class="cls-7" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(463 488) rotate(-90)"/>
+    <path id="Rectangle_13" data-name="Rectangle 13" class="cls-8" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(663 288)"/>
+    <path id="Rectangle_14" data-name="Rectangle 14" class="cls-3" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(663 688) rotate(-90)"/>
+    <path id="Rectangle_15" data-name="Rectangle 15" class="cls-5" d="M200,0h0a0,0,0,0,1,0,0V200a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v0A200,200,0,0,1,200,0Z" transform="translate(663 88)"/>
+  </g>
+</svg>

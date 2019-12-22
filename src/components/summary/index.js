@@ -1,24 +1,43 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import Slide from "./slide";
+import { withRouter, Redirect } from "react-router-dom";
+import { FaBeer } from "react-icons/fa";
+import styled from "styled-components";
+import Slide1 from "./slides/slide1";
+import Slide2 from "./slides/slide2";
 
-export default withRouter(({ history, userData }) => {
-  if (Object.keys(userData).length < 1) {
-    history.push("/");
-  }
+const Header = styled.div`
+  display: flex;
+`;
+
+const Footer = styled.div`
+  display: flex;
+`;
+
+const Link = styled.a``;
+
+export default withRouter(({ userData, nextSlide, currentSlide }) => {
+  const Slides = [Slide1, Slide2];
+
   return Object.keys(userData).length > 0 ? (
     <div>
-      <h1>{userData.metadata.login}</h1>
-      <img src={userData.metadata.avatar_url} alt="avatar" />
-      <Slide index="1">
-        {userData.repos ? (
-          userData.repos.map(val => <h1 key={val.id}>{val.name}</h1>)
-        ) : (
-          <h1>None</h1>
-        )}
-      </Slide>
+      <Header></Header>
+      {Slides.map((Val, index) => {
+        if (index + 1 === currentSlide)
+          return <Val userData={userData} key={index} />;
+      })}
+
+      <button onClick={nextSlide}>
+        <FaBeer size="50px" />
+      </button>
+
+      <Footer>
+        <Link href="">LEGAL</Link>
+        <Link>PRIVACY</Link>
+        <Link>COOKIES</Link>
+        <Link>LANGUAGE</Link>
+      </Footer>
     </div>
   ) : (
-    <div></div>
+    <Redirect to="/" />
   );
 });
