@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import githubREST from "../../../api/githubREST";
 
@@ -40,8 +40,14 @@ const Button = styled.button`
   }
   transition: all 0.2s ease-in-out;
 `;
-export default ({ username, setUserData, setUsername, history }) => {
-  const handleChange = event => setUsername(event.target.value);
+export default ({ setUserData, history }) => {
+  const [username, setUsername] = useState("");
+
+  const handleChange = event => {
+    event.preventDefault();
+    setUsername(event.target.value);
+  };
+
   return (
     <Form
       onSubmit={event => {

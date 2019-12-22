@@ -15,7 +15,6 @@ import "./App.css";
 const App = props => {
   const slideCount = 2;
 
-  const [username, setUsername] = useState("");
   const [userData, setUserData] = useState({});
   const [currentSlide, setCurrentSlide] = useState(1);
   const nextSlide = () => {
@@ -44,13 +43,7 @@ const App = props => {
     {
       path: "/search",
       name: "Search",
-      Component: () => (
-        <Search
-          username={username}
-          setUserData={setUserData}
-          setUsername={setUsername}
-        />
-      )
+      Component: () => <Search setUserData={setUserData} />
     },
     { path: "*", name: "404", Component: () => <Redirect to="/" /> }
   ];
