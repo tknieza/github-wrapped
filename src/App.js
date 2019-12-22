@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
+  Link,
+  NavLink,
   Redirect
 } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import Home from "./components/home";
 import Summary from "./components/summary";
 import Search from "./components/search";
@@ -22,31 +24,58 @@ const App = props => {
     }
   };
 
+  const routes = [
+    {
+      path: "/",
+      name: "Home",
+      Component: () => <Home setUserData={setUserData} />
+    },
+    {
+      path: "/summary",
+      name: "Summary",
+      Component: () => (
+        <Summary
+          userData={userData}
+          nextSlide={nextSlide}
+          currentSlide={currentSlide}
+        />
+      )
+    },
+    {
+      path: "/search",
+      name: "Search",
+      Component: () => (
+        <Search
+          username={username}
+          setUserData={setUserData}
+          setUsername={setUsername}
+        />
+      )
+    },
+    { path: "*", name: "404", Component: () => <Redirect to="/" /> }
+  ];
+
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home setUserData={setUserData} />
-          </Route>
-          <Route path="/summary">
-            <Summary
-              userData={userData}
-              nextSlide={nextSlide}
-              currentSlide={currentSlide}
-            />
-          </Route>
-          <Route path="/search">
-            <Search
-              username={username}
-              setUserData={setUserData}
-              setUsername={setUsername}
-            />
-          </Route>
-          <Route path="*">
-            <Redirect to="/" />
-          </Route>
-        </Switch>
+        <div className="container">
+          {routes.map(({ path, Component }) => (
+            <Route key={path} exact path={path}>
+              {({ match }) => (
+                <CSSTransition
+                  in={match != null}
+                  timeout={300}
+                  classNames="page"
+                  unmountOnExit
+                >
+                  <div className="page">
+                    <Component />
+                  </div>
+                </CSSTransition>
+              )}
+            </Route>
+          ))}
+        </div>
       </Router>
     </div>
   );

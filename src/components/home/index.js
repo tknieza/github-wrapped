@@ -4,21 +4,27 @@ import styled from "styled-components";
 import posed from "react-pose";
 import LandingPageDesign from "../../images/LandingPageDesign.svg";
 
+const Header = styled.div`
+  display: flex;
+  margin: 1rem 0;
+`;
+
 const AppTitle = styled.h1`
   text-transform: uppercase;
-  margin: 1rem 0;
+  margin: 0;
   font-weight: bold;
 `;
 
 const Links = styled.div`
   display: flex;
-  margin-left: 1rem;
+  margin-left: 2rem;
+  padding-top: 0.6rem;
   a,
   span {
     text-transform: uppercase;
     font-size: 1rem;
-    font-weight: 300;
-    margin: 0.5rem;
+    font-weight: 400;
+    margin: 0 0.5rem;
     opacity: 0.7;
     transition: opacity 0.12s ease-in-out;
     user-select: none;
@@ -29,22 +35,8 @@ const Links = styled.div`
       opacity: 1;
       cursor: pointer;
     }
-
-    :active {
-    }
   }
 `;
-
-const MainDisplay = styled.div`
-  z-index: 1;
-  display: flex;
-
-  * {
-    z-index: 1;
-  }
-`;
-
-const Header = styled.div``;
 
 const Container = styled.div`
   padding: 1.4rem;
@@ -62,11 +54,17 @@ const Design = styled.div`
   }
 `;
 
-const Content = styled.div`
+const MainDisplay = styled.div`
   position: fixed;
-  width: 19rem;
-  left: 2rem;
+  overflow: auto;
+  bottom: 0;
+`;
+
+const Content = styled.div`
+  position: relative;
   bottom: 2rem;
+  width: 18rem;
+  overflow: auto;
 
   h1 {
     font-size: 3.2rem;
@@ -77,6 +75,7 @@ const Content = styled.div`
   p {
     margin: 0 0 3rem 0.5rem;
     opacity: 0.5;
+    line-height: 1.5rem;
   }
 
   button {
@@ -103,11 +102,6 @@ const Content = styled.div`
   }
 `;
 
-const PulseAnimation = posed.div({
-  hidden: { opacity: 0, transition: { ease: "easeOut" } },
-  visible: { opacity: 1, transition: { ease: "easeOut" } }
-});
-
 export default withRouter(({ history, setUserData }) => {
   const [boxVisible, setboxVisible] = useState(false);
 
@@ -123,19 +117,16 @@ export default withRouter(({ history, setUserData }) => {
         <img src={LandingPageDesign} alt="Landing page design not found" />
       </Design>
 
-      {/* <PulseAnimation pose={boxVisible ? "visible" : "hidden"}> */}
-      <PulseAnimation>
-        <Header>
-          <AppTitle>GitHub Wrapped</AppTitle>
-          <Links>
-            <span onClick={() => history.push("/about")}>Why Wrapped?</span>
-            <span onClick={() => history.push("/new")}>Newbies</span>
-            <a href="https://github.com/tknieza" alt="no">
-              Codebase
-            </a>
-          </Links>
-        </Header>
-      </PulseAnimation>
+      <Header>
+        <AppTitle>GitHub Wrapped</AppTitle>
+        <Links>
+          <span onClick={() => history.push("/about")}>Why Wrapped?</span>
+          <span onClick={() => history.push("/new")}>Newbies</span>
+          <a href="https://github.com/tknieza" alt="no">
+            Codebase
+          </a>
+        </Links>
+      </Header>
 
       <MainDisplay>
         <Content>
