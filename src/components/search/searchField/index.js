@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import githubREST from "../../../api/githubREST";
 
@@ -40,11 +41,11 @@ const Button = styled.button`
   }
   transition: all 0.2s ease-in-out;
 `;
-export default ({ setUserData, history }) => {
+
+const SearchField = ({ setUserData, history }) => {
   const [username, setUsername] = useState("");
 
   const handleChange = event => {
-    event.preventDefault();
     setUsername(event.target.value);
   };
 
@@ -67,3 +68,10 @@ export default ({ setUserData, history }) => {
     </Form>
   );
 };
+
+SearchField.propTypes = {
+  setUserData: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+export default SearchField;

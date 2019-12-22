@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import posed from "react-pose";
 import LandingPageDesign from "../../images/LandingPageDesign.svg";
 
 const Header = styled.div`
@@ -102,15 +102,7 @@ const Content = styled.div`
   }
 `;
 
-export default withRouter(({ history, setUserData }) => {
-  const [boxVisible, setboxVisible] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setboxVisible(!boxVisible);
-    }, 1000);
-  });
-
+const Home = ({ history }) => {
   return (
     <Container>
       <Design>
@@ -139,4 +131,10 @@ export default withRouter(({ history, setUserData }) => {
       </MainDisplay>
     </Container>
   );
-});
+};
+
+Home.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
+export default withRouter(Home);

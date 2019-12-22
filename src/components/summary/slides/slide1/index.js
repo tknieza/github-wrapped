@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default ({ userData }) => {
+const Slide1 = ({ userData }) => {
   return (
     <div>
       <h1>Slide 1</h1>
@@ -9,3 +10,9 @@ export default ({ userData }) => {
     </div>
   );
 };
+
+Slide1.propTypes = {
+  userData: PropTypes.object.isRequired
+};
+
+export default Slide1;

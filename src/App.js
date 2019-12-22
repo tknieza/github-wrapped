@@ -1,27 +1,13 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import Home from "./components/home";
 import Summary from "./components/summary";
 import Search from "./components/search";
 import "./App.css";
 
-const App = props => {
-  const slideCount = 2;
-
+const App = () => {
   const [userData, setUserData] = useState({});
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const nextSlide = () => {
-    if (currentSlide < slideCount) {
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
 
   const routes = [
     {
@@ -32,13 +18,7 @@ const App = props => {
     {
       path: "/summary",
       name: "Summary",
-      Component: () => (
-        <Summary
-          userData={userData}
-          nextSlide={nextSlide}
-          currentSlide={currentSlide}
-        />
-      )
+      Component: () => <Summary userData={userData} />
     },
     {
       path: "/search",

@@ -1,5 +1,6 @@
-import React from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 import { FaBeer } from "react-icons/fa";
 import styled from "styled-components";
 import Slide1 from "./slides/slide1";
@@ -15,8 +16,12 @@ const Footer = styled.div`
 
 const Link = styled.a``;
 
-export default withRouter(({ userData, nextSlide, currentSlide }) => {
+const Summary = ({ userData }) => {
   const Slides = [Slide1, Slide2];
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleClick = () =>
+    currentSlide < Slides.length ? setCurrentSlide(currentSlide + 1) : null;
 
   return Object.keys(userData).length > 0 ? (
     <div>
@@ -24,9 +29,10 @@ export default withRouter(({ userData, nextSlide, currentSlide }) => {
       {Slides.map((Val, index) => {
         if (index + 1 === currentSlide)
           return <Val userData={userData} key={index} />;
+        else return null;
       })}
 
-      <button onClick={nextSlide}>
+      <button onClick={handleClick}>
         <FaBeer size="50px" />
       </button>
 
@@ -40,4 +46,10 @@ export default withRouter(({ userData, nextSlide, currentSlide }) => {
   ) : (
     <Redirect to="/" />
   );
-});
+};
+
+Summary.propTypes = {
+  userData: PropTypes.object.isRequired
+};
+
+export default Summary;

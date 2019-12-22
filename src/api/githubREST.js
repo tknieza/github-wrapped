@@ -7,7 +7,7 @@ async function githubREST(event, username, setUserData, history) {
     return;
   }
 
-  let data = await fetch(`https://api.github.com/users/${username}`)
+  await fetch(`https://api.github.com/users/${username}`)
     .then(res => res.json())
     .then(json => {
       userData.metadata = json;
@@ -99,7 +99,6 @@ async function githubREST(event, username, setUserData, history) {
             });
         });
     });
-  console.log(data);
 }
 
 export default githubREST;

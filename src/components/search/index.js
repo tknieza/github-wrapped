@@ -1,16 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import SearchField from "./searchField";
 
-export default withRouter(({ username, setUserData, setUsername, history }) => {
+const Search = ({ setUserData, history }) => {
   return (
     <div>
-      <SearchField
-        username={username}
-        setUserData={setUserData}
-        setUsername={setUsername}
-        history={history}
-      />
+      <h1>Search</h1>
+      <SearchField setUserData={setUserData} history={history} />
     </div>
   );
-});
+};
+
+Search.propTypes = {
+  setUserData: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+export default withRouter(Search);
