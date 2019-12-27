@@ -25,7 +25,8 @@ const Summary = ({ userData }) => {
 
   return Object.keys(userData).length > 0 ? (
     <div>
-      <Header></Header>
+      {/* <Header></Header> */}
+
       {Slides.map((Val, index) => {
         if (index + 1 === currentSlide)
           return <Val userData={userData} key={index} />;

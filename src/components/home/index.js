@@ -40,6 +40,7 @@ const Links = styled.div`
 
 const Container = styled.div`
   padding: 1.4rem;
+  min-height: 85vh;
 `;
 
 const Design = styled.div`
@@ -54,17 +55,11 @@ const Design = styled.div`
   }
 `;
 
-const MainDisplay = styled.div`
-  position: fixed;
-  overflow: auto;
-  bottom: 0;
-`;
-
 const Content = styled.div`
-  position: relative;
-  bottom: 2rem;
+  position: absolute;
+  bottom: 0rem;
+  left: 2rem;
   width: 18rem;
-  overflow: auto;
 
   h1 {
     font-size: 3.2rem;
@@ -120,15 +115,11 @@ const Home = ({ history }) => {
         </Links>
       </Header>
 
-      <MainDisplay>
-        <Content>
-          <h1>All of the projects. Wrapped.</h1>
-          <p>
-            Profile overview highlighting how you contributed to open-source
-          </p>
-          <button onClick={() => history.push("/search")}>Start now</button>
-        </Content>
-      </MainDisplay>
+      <Content>
+        <h1>All of the projects. Wrapped.</h1>
+        <p>Profile overview highlighting how you contributed to open-source</p>
+        <button onClick={() => history.push("/search")}>Start now</button>
+      </Content>
     </Container>
   );
 };
