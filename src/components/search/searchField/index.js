@@ -4,7 +4,7 @@ import styled from "styled-components";
 import githubREST from "../../../api/githubREST";
 
 const Input = styled.input`
-  width: 12rem;
+  width: 100%;
   height: 1.2rem;
   font-size: 1.3rem;
   transition: all 0.2s ease-out;
@@ -18,23 +18,33 @@ const Input = styled.input`
   border-bottom: 3px;
   padding: 0.5rem 0;
   margin: 1rem;
-  margin-right: 1rem;
 `;
 
 const Form = styled.form`
   background: white;
-  border-radius: 30px;
-  width: 20rem;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  div {
+    width: 70%;
+  }
+
+  div:last-of-type {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Button = styled.button`
   background-color: #b1ede8;
-  border-radius: 25px;
+  border-radius: 30px;
   color: #282c34;
   border: none;
-  margin: 0.2rem;
   font-size: 1.2rem;
-  padding: 0.6rem;
+  height: 2.6rem;
+  width: 2.6rem;
   :hover {
     background-color: #ff6978;
     color: white;
@@ -55,16 +65,21 @@ const SearchField = ({ setUserData, history }) => {
         githubREST(event, username, setUserData, history.push);
       }}
     >
-      <Input placeholder="Username" onChange={handleChange} />
-      <Button
-        onClick={event => {
-          githubREST(event, username, setUserData, history.push);
-        }}
-      >
-        <span role="img" aria-label="Search">
-          &#x1f50d;
-        </span>
-      </Button>
+      <div>
+        <Input placeholder="Username" onChange={handleChange} />
+      </div>
+
+      <div>
+        <Button
+          onClick={event => {
+            githubREST(event, username, setUserData, history.push);
+          }}
+        >
+          <span role="img" aria-label="Search">
+            &#x1f50d;
+          </span>
+        </Button>
+      </div>
     </Form>
   );
 };
