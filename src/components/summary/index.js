@@ -2,19 +2,15 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FaBeer } from "react-icons/fa";
-import styled from "styled-components";
+import * as styles from "./SummaryStyles";
 import Slide1 from "./slides/slide1";
 import Slide2 from "./slides/slide2";
-
-const Footer = styled.div`
-  display: flex;
-`;
-
-const Link = styled.a``;
 
 const Summary = ({ userData }) => {
   const Slides = [Slide1, Slide2];
   const [currentSlide, setCurrentSlide] = useState(1);
+
+  const { Footer, Link } = styles;
 
   const handleClick = () =>
     currentSlide < Slides.length ? setCurrentSlide(currentSlide + 1) : null;
