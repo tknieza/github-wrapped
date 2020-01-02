@@ -1,80 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import Loader from "react-loader-spinner";
 import SearchField from "./searchField";
+import * as styles from "./searchStyles";
 import thing from "../../images/379-desktop-wallpaper.png";
 
-const Container = styled.div`
-  min-height: 90vh;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-`;
-
-const Design = styled.div`
-  width: 50vw;
-  img {
-    position: absolute;
-    top: 20vh;
-    margin: 1rem;
-    height: 55vh;
-  }
-  /* border: 1px red solid; */
-`;
-
-const Content = styled.div`
-  /* border: 1px blue solid; */
-  width: 50vw;
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  div {
-    width: 50%;
-    margin: auto;
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  margin-bottom: 0;
-`;
-
-const Header = styled.p`
-  font-size: 1rem;
-  margin: 2rem 0;
-`;
-
-const SearchContainer = styled.div`
-  background-color: #fff8e3;
-`;
-
-const Legal = styled.div`
-  max-height: 10vh;
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  a,
-  span {
-    text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0 0.5rem;
-    opacity: 0.7;
-    transition: opacity 0.12s ease-in-out;
-    user-select: none;
-    text-decoration: none;
-    color: #424242;
-
-    :hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-  }
-`;
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Search = ({ setUserData, history }) => {
+  const [loading, setLoading] = useState(false);
+
+  const {
+    Container,
+    Design,
+    Content,
+    Title,
+    Header,
+    SearchContainer,
+    Legal,
+    LoaderBackground,
+    LoaderContainer
+  } = styles;
+
+  const PageLoad = (
+    <LoaderBackground>
+      <LoaderContainer>
+        <Loader type="Grid" color="#A1A1A1" height={200} width={200} />
+      </LoaderContainer>
+    </LoaderBackground>
+  );
+
   return (
     <SearchContainer>
       <Container>
@@ -90,7 +46,11 @@ const Search = ({ setUserData, history }) => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
               libero.
             </Header>
-            <SearchField setUserData={setUserData} history={history} />
+            <SearchField
+              setUserData={setUserData}
+              setLoading={setLoading}
+              history={history}
+            />
           </div>
         </Content>
         <Design>
@@ -108,6 +68,7 @@ const Search = ({ setUserData, history }) => {
           TOS
         </a>
       </Legal>
+      {loading ? PageLoad : null}
     </SearchContainer>
   );
 };

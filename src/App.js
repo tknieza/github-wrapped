@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import Home from "./components/home";
+import Home from "./components/Home";
 import Summary from "./components/summary";
 import Search from "./components/search";
 import "./App.css";
@@ -16,14 +16,14 @@ const App = () => {
       Component: () => <Home setUserData={setUserData} />
     },
     {
-      path: "/summary",
-      name: "Summary",
-      Component: () => <Summary userData={userData} />
-    },
-    {
       path: "/search",
       name: "Search",
       Component: () => <Search setUserData={setUserData} />
+    },
+    {
+      path: "/summary",
+      name: "Summary",
+      Component: () => <Summary userData={userData} />
     },
     { path: "*", name: "404", Component: () => <Redirect to="/" /> }
   ];
