@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import Home from "./components/Home";
+import Home from "./components/home";
 import Summary from "./components/summary";
 import Search from "./components/search";
 import "./App.css";
