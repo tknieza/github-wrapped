@@ -1,6 +1,6 @@
-# Github Year Wrapped 2019
+# Github Year Wrapped
 
-ReactJS Web application that curatively shows off what projects you were a part of during 2019!
+Web application that curatively shows you activity across GitHub.
 
 ## Table of Contents
 
